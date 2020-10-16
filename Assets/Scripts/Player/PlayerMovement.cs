@@ -7,71 +7,71 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float lookSpeed = 1.0f;
     [SerializeField] float moveLookSpeed = 0.15f;
 
-    [Space] [SerializeField] private InputActionAsset playerControls;
+    [Space] [SerializeField] InputActionAsset playerControls;
 
-    private InputAction lookAction;
-    private InputAction moveAction;
+    private InputAction _lookAction;
+    private InputAction _moveAction;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
 
-    private Vector2 movementDirection;
-    private Vector2 lookDirection;
+    private Vector2 _movementDirection;
+    private Vector2 _lookDirection;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         var defaultActionMap = playerControls.FindActionMap("Gameplay");
 
-        moveAction = defaultActionMap.FindAction("Move");
-        lookAction = defaultActionMap.FindAction("Look");
+        _moveAction = defaultActionMap.FindAction("Move");
+        _lookAction = defaultActionMap.FindAction("Look");
 
-        moveAction.performed += OnMovementChanged;
-        moveAction.canceled += OnMovementChanged;
+        _moveAction.performed += OnMovementChanged;
+        _moveAction.canceled += OnMovementChanged;
 
-        lookAction.performed += OnLookChanged;
-        lookAction.canceled += OnLookChanged;
+        _lookAction.performed += OnLookChanged;
+        _lookAction.canceled += OnLookChanged;
     }
 
     private void OnEnable()
     {
-        moveAction.Enable();
-        lookAction.Enable();
+        _moveAction.Enable();
+        _lookAction.Enable();
     }
 
     private void OnDisable()
     {
-        moveAction.Disable();
-        lookAction.Disable();
+        _moveAction.Disable();
+        _lookAction.Disable();
     }
 
     private void OnMovementChanged(InputAction.CallbackContext context)
     {
-        movementDirection = context.ReadValue<Vector2>();
+        _movementDirection = context.ReadValue<Vector2>();
     }
 
     private void OnLookChanged(InputAction.CallbackContext context)
     {
-        lookDirection = context.ReadValue<Vector2>();
+        _lookDirection = context.ReadValue<Vector2>();
     }
 
     private void Move()
     {
-        rb.MovePosition(transform.position + (new Vector3(movementDirection.x, movementDirection.y, transform.position.z) * speed * Time.deltaTime));
+        _rb.MovePosition(transform.position + (new Vector3(_movementDirection.x, _movementDirection.y, transform.position.z) * speed * Time.deltaTime));
     }
 
     private void Turn()
     {
-        if (lookDirection == Vector2.zero)
+        if (_lookDirection == Vector2.zero)
         {
-            if (movementDirection != Vector2.zero)
+            if (_movementDirection != Vector2.zero)
             {
-                var angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
+                var angle = Mathf.Atan2(_movementDirection.y, _movementDirection.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), moveLookSpeed);
             }
         }
         else
         {
-            var angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+            var angle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), lookSpeed);
         }
     }

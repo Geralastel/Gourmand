@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 247285347}
   - component: {fileID: 247285349}
   - component: {fileID: 247285348}
+  - component: {fileID: 247285350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,10 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf937cf6b849b141872e7778c7a0003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 37702d93e775b0943a4f340db704788c, type: 2}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 256
-  gunData: {fileID: 11400000, guid: 37702d93e775b0943a4f340db704788c, type: 2}
   weaponModelTransformParent: {fileID: 1918084738}
 --- !u!114 &247285349
 MonoBehaviour:
@@ -245,6 +246,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 3
   playerControls: {fileID: -944628639613478452, guid: daed69d58250b15408f17e792252e9dd, type: 3}
+--- !u!114 &247285350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247285343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c448037980b7abb49a6a40ffc84f4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrossHair: {fileID: 525149913}
 --- !u!1 &253506913
 GameObject:
   m_ObjectHideFlags: 0

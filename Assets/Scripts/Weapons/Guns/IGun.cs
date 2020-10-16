@@ -1,9 +1,11 @@
-﻿using Assets.Scripts.Weapons;
+﻿using Assets.Scripts.Guns;
 
 namespace Assets.Scripts
 {
     internal interface IGun : IWeapon
     {
+        int AmmoInClip { get; }
         void Reload();
+        void Shoot();
     }
 }

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: StartingGun
   m_EditorClassIdentifier: 
   model: {fileID: 8241598370974313866, guid: e17dd864df6dfa24fbfb0871c3a1ce4f, type: 3}
-  range: 100
+  range: 20
   damage: 1
   knockbackForce: 0
   rateOfFire: 1
-  magazineSize: -1
+  magazineSize: 20
+  reloadSpeed: 1

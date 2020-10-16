@@ -1,28 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Weapons.Guns;
 
 namespace Assets.Scripts.Guns
 {
-    public class StartingGun : Gun
+    public class StartingGun : RaycastGun
     {
-        GameObject weaponParent; 
-        private void Awake()
-        {
-            // set sprite
-
-        }
-        public override void PrimaryAction()
-        {
-            ShootHelper.RayCastShoot(transform.position, transform.right, collisionLayer, gunData);
-        }
-
-        public override void Reload()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void SecondaryAction()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
