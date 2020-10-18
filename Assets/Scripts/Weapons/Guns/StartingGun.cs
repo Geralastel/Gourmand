@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Weapons.Guns;
-
-namespace Assets.Scripts.Guns
+﻿namespace Assets.Scripts.Weapons.Guns
 {
     public class StartingGun : RaycastGun
     {

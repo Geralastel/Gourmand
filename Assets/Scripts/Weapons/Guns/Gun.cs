@@ -1,26 +1,19 @@
-﻿using Assets.Scripts.Guns;
+﻿using Assets.Scripts.Weapons;
 using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public abstract class Gun : MonoBehaviour, IGun
+    public abstract class Gun : GenericWeapon<WeaponData>, IGun
     {
-        public GunData gunData;
-
-        [SerializeField] protected LayerMask collisionLayer;
-
-        [SerializeField] private Transform weaponModelTransformParent;
-
-        private GameObject _model;
         private IEnumerator _reload;
+        private GunData gunData;
 
         public int AmmoInClip { get; protected set; }
 
-        public abstract void SecondaryAction();
         public abstract void Shoot();
 
-        public virtual void PrimaryAction()
+        public override void PrimaryAction()
         {
             if (CanShoot())
             {
@@ -38,19 +31,12 @@ namespace Assets.Scripts
             StartCoroutine(_reload);
         }
 
-        private void OnEnable()
+        public override void Initialize(WeaponData weaponData)
         {
-            if (_model != null) Destroy(_model);
+            base.Initialize(weaponData);
 
-            if (gunData.Model != null)
-            {
-                _model = Instantiate(gunData.Model);
-                _model.transform.SetParent(weaponModelTransformParent, false);
-            }
-        }
+            gunData = weaponData as GunData;
 
-        private void Awake()
-        {
             if (gunData == null)
             {
                 Debug.LogError($"{gameObject.name}: Missing Gun Data");
@@ -66,16 +52,6 @@ namespace Assets.Scripts
                 {
                     Debug.LogError($"{gameObject.name}: Reload speed set to 0");
                 }
-            }
-
-            if (collisionLayer == 0)
-            {
-                Debug.LogError($"{gameObject.name}: Collision Layer set to Nothing");
-            }
-
-            if (weaponModelTransformParent == null)
-            {
-                Debug.LogError($"{gameObject.name}: Missing model transform parent");
             }
 
             AmmoInClip = gunData.MagazineSize;
