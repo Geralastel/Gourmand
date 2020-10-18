@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lookSpeed: 1
+  lookSpeed: 0.5
   moveLookSpeed: 0.15
   playerControls: {fileID: -944628639613478452, guid: a8bba53c04bbca342bb9af553fdd2b6b, type: 3}
 --- !u!114 &247285348
@@ -438,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &525149914
 Transform:
   m_ObjectHideFlags: 0
