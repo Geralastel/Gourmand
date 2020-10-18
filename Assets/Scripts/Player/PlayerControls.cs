@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Player/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -15,7 +15,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Gameplay"",
+            ""name"": ""Standard"",
             ""id"": ""1525ae45-021f-42cd-8e2d-afa81d9bca88"",
             ""actions"": [
                 {
@@ -38,6 +38,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""9abd5f18-fc43-4873-a656-c70b4568a723"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c3ce6cf-cd33-4134-a551-2883f860e7ae"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -76,6 +84,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08f35b04-58df-41e0-a9a5-43ccc7ceaae0"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -94,11 +113,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Gameplay
-        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
-        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        // Standard
+        m_Standard = asset.FindActionMap("Standard", throwIfNotFound: true);
+        m_Standard_Move = m_Standard.FindAction("Move", throwIfNotFound: true);
+        m_Standard_Look = m_Standard.FindAction("Look", throwIfNotFound: true);
+        m_Standard_Shoot = m_Standard.FindAction("Shoot", throwIfNotFound: true);
+        m_Standard_Reload = m_Standard.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -145,39 +165,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Gameplay
-    private readonly InputActionMap m_Gameplay;
-    private IGameplayActions m_GameplayActionsCallbackInterface;
-    private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Look;
-    private readonly InputAction m_Gameplay_Shoot;
-    public struct GameplayActions
+    // Standard
+    private readonly InputActionMap m_Standard;
+    private IStandardActions m_StandardActionsCallbackInterface;
+    private readonly InputAction m_Standard_Move;
+    private readonly InputAction m_Standard_Look;
+    private readonly InputAction m_Standard_Shoot;
+    private readonly InputAction m_Standard_Reload;
+    public struct StandardActions
     {
         private @PlayerControls m_Wrapper;
-        public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Look => m_Wrapper.m_Gameplay_Look;
-        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
+        public StandardActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Standard_Move;
+        public InputAction @Look => m_Wrapper.m_Standard_Look;
+        public InputAction @Shoot => m_Wrapper.m_Standard_Shoot;
+        public InputAction @Reload => m_Wrapper.m_Standard_Reload;
+        public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
-        public void SetCallbacks(IGameplayActions instance)
+        public static implicit operator InputActionMap(StandardActions set) { return set.Get(); }
+        public void SetCallbacks(IStandardActions instance)
         {
-            if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
+            if (m_Wrapper.m_StandardActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Look.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
-                @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @Move.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnMove;
+                @Look.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnLook;
+                @Shoot.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnShoot;
+                @Reload.started -= m_Wrapper.m_StandardActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_StandardActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_StandardActionsCallbackInterface.OnReload;
             }
-            m_Wrapper.m_GameplayActionsCallbackInterface = instance;
+            m_Wrapper.m_StandardActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
@@ -189,10 +214,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
-    public GameplayActions @Gameplay => new GameplayActions(this);
+    public StandardActions @Standard => new StandardActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -202,10 +230,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IGameplayActions
+    public interface IStandardActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

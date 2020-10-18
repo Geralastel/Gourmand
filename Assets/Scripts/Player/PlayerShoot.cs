@@ -7,7 +7,9 @@ public class PlayerShoot : MonoBehaviour
     [Tooltip("Fire rate is set in rounds per minute")]
     [Range(1, 10)] [SerializeField] float fireRate = 1;
 
+#pragma warning disable CS0649
     [Space] [SerializeField] InputActionAsset playerControls;
+#pragma warning restore CS0649
 
     private InputAction _shootAction;
 
@@ -17,9 +19,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Awake()
     {
-        _gun = GetComponent<IGun>();
-
-        var defaultActionMap = playerControls.FindActionMap("Gameplay");
+        var defaultActionMap = playerControls.FindActionMap("Standard");
 
         _shootAction = defaultActionMap.FindAction("Shoot");
 
@@ -27,6 +27,11 @@ public class PlayerShoot : MonoBehaviour
         //shootAction.canceled += OnShoot;
 
         _held = false;
+    }
+
+    private void Start()
+    {
+        _gun = GetComponentInChildren<IGun>();
     }
 
     private void OnEnable() => _shootAction.Enable();

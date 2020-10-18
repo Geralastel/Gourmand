@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 247285345}
   - component: {fileID: 247285347}
   - component: {fileID: 247285349}
-  - component: {fileID: 247285348}
   - component: {fileID: 247285350}
+  - component: {fileID: 247285348}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -214,7 +214,7 @@ MonoBehaviour:
   speed: 10
   lookSpeed: 1
   moveLookSpeed: 0.15
-  playerControls: {fileID: -944628639613478452, guid: daed69d58250b15408f17e792252e9dd, type: 3}
+  playerControls: {fileID: -944628639613478452, guid: a8bba53c04bbca342bb9af553fdd2b6b, type: 3}
 --- !u!114 &247285348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,14 +224,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 247285343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf937cf6b849b141872e7778c7a0003, type: 3}
+  m_Script: {fileID: 11500000, guid: 33c0af24595e77943bd1b9805b2376ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 37702d93e775b0943a4f340db704788c, type: 2}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  weaponData: {fileID: 11400000, guid: 37702d93e775b0943a4f340db704788c, type: 2}
   weaponModelTransformParent: {fileID: 1918084738}
+  factory: {fileID: 6967122661390709490, guid: 6e50d5a9eeb96374f9f60a390621075b, type: 3}
 --- !u!114 &247285349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 3
-  playerControls: {fileID: -944628639613478452, guid: daed69d58250b15408f17e792252e9dd, type: 3}
+  playerControls: {fileID: -944628639613478452, guid: a8bba53c04bbca342bb9af553fdd2b6b, type: 3}
 --- !u!114 &247285350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247285343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c448037980b7abb49a6a40ffc84f4f69, type: 3}
   m_Name: 
@@ -440,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &525149914
 Transform:
   m_ObjectHideFlags: 0
@@ -470,6 +468,7 @@ GameObject:
   - component: {fileID: 609048152}
   - component: {fileID: 609048157}
   - component: {fileID: 609048153}
+  - component: {fileID: 609048158}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Damageable
@@ -574,7 +573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609048151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6224027, y: -6.816972, z: 1}
+  m_LocalPosition: {x: 3.6224027, y: -6.816972, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -601,6 +600,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &609048158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609048151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa27291773f6aa48b5b9a811f9db634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitParticleData: {fileID: 11400000, guid: cf37b135f4651ee4ab9b470d7caea317, type: 2}
+  deadParticleData: {fileID: 0}
 --- !u!1 &1270895744
 GameObject:
   m_ObjectHideFlags: 0

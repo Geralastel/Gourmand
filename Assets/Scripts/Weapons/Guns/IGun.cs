@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Guns;
-
-namespace Assets.Scripts
+﻿namespace Assets.Scripts
 {
     internal interface IGun : IWeapon
     {
