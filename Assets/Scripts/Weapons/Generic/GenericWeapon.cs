@@ -7,9 +7,6 @@ namespace Assets.Scripts.Weapons
         public T weaponData;
 
         [SerializeField] protected LayerMask collisionLayer;
-//#pragma warning disable CS0649
-//        [SerializeField] private Transform weaponModelTransformParent;
-//#pragma warning restore CS0649
 
         protected GameObject _prefab;
 
@@ -38,11 +35,6 @@ namespace Assets.Scripts.Weapons
             {
                 Debug.LogError($"{gameObject.name}: Collision Layer set to Nothing");
             }
-
-            //if (weaponModelTransformParent == null)
-            //{
-            //    Debug.LogError($"{gameObject.name}: Missing model transform parent");
-            //}
         }
     }
 }

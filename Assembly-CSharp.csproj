@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
     <Compile Include="Assets\Scripts\Particles\DamageParticleSystem.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Guns\Gun.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Guns\GenericGun.cs" />
     <Compile Include="Assets\Scripts\Weapons\Guns\IGun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\Entity\IDamageable.cs" />

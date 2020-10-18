@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Weapons.Guns
 {
-    public class RaycastGun : Gun
+    public class RaycastGun : GenericGun
     {
         // add a emitter for bullet line
         public override void SecondaryAction() { }
