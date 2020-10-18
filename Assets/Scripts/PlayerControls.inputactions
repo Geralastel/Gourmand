@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Standard",
+            "name": "Gameplay",
             "id": "1525ae45-021f-42cd-8e2d-afa81d9bca88",
             "actions": [
                 {
@@ -25,14 +25,6 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "9abd5f18-fc43-4873-a656-c70b4568a723",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Reload",
-                    "type": "Button",
-                    "id": "9c3ce6cf-cd33-4134-a551-2883f860e7ae",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -69,17 +61,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "08f35b04-58df-41e0-a9a5-43ccc7ceaae0",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

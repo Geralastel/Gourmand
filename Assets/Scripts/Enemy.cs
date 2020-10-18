@@ -1,7 +1,8 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Entity;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield, IEmitDamageParticles
+public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield
 {
     [SerializeField] float health = 10f;
     [SerializeField] float shield = 0f;
@@ -13,14 +14,6 @@ public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield, IEmitDamagePa
     public float Shield { get => shield; set => shield = value; }
 
     public float ShieldMax => 10f;
-
-    public DamageParticleSystem DamageParticleSystem { get; set; }
-
-    private void Awake()
-    {
-        DamageParticleSystem = GetComponent<DamageParticleSystem>();
-    }
-
     public float ModifyHealth(float amount)
     {
         Health += amount;
@@ -29,22 +22,12 @@ public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield, IEmitDamagePa
 
     public float ModifyShield(float amount)
     {
-        float remainingDamage = 0;
-        if(Shield + amount < 0)
-        {
-            Shield = 0;
-            remainingDamage = Shield + amount; ;
-        } else
-        {
-            Shield += amount;
-        }
-        return remainingDamage;
+        Shield += amount;
+        return Shield;
     }
 
-    public void TakeDamage(float damage, Vector2? hitDirection)
+    public void TakeDamage(float damage)
     {
-        DamageParticleSystem?.EmitHit(hitDirection);
-
         var remainingDamage = ModifyShield(-damage);
         if (remainingDamage < 0) ModifyHealth(remainingDamage);
 

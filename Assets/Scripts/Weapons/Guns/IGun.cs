@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts
+﻿using Assets.Scripts.Guns;
+
+namespace Assets.Scripts
 {
     internal interface IGun : IWeapon
     {

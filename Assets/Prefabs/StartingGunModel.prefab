@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8241598370974313864}
   - component: {fileID: 8241598370974313865}
-  - component: {fileID: -4672582280270051337}
   m_Layer: 0
-  m_Name: StartingGun
+  m_Name: StartingGunModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,20 +82,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4672582280270051337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241598370974313866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf937cf6b849b141872e7778c7a0003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  weaponModelTransformParent: {fileID: 0}

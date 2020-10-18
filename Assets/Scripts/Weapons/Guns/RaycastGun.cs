@@ -4,20 +4,17 @@ namespace Assets.Scripts.Weapons.Guns
 {
     public class RaycastGun : Gun
     {
-        // add a emitter for bullet line
         public override void SecondaryAction() { }
 
         public override void Shoot()
         {
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, transform.right, weaponData.Range, collisionLayer);
-            Debug.DrawRay(transform.position, transform.right * weaponData.Range, Color.red, 20f);
-            var hitDireciton = -hit.normal;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, gunData.Range, collisionLayer);
             if (hit.collider)
             {
                 var target = hit.collider.GetComponent<IDamageable>();
-                target?.TakeDamage(weaponData.Damage, hitDireciton);
+                target?.TakeDamage(gunData.Damage);
             }
-            hit.rigidbody?.AddForce(hitDireciton * weaponData.KnockbackForce);
+            hit.rigidbody?.AddForce(-hit.normal * gunData.KnockbackForce);
         }
     }
 }

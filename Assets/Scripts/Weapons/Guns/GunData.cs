@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Guns
 {
-    [CreateAssetMenu(fileName = "New GunData", menuName = "Gun Data", order = 51)]
+    [CreateAssetMenu(fileName = "New GunData", menuName = "Gun Data", order = 52)]
     public class GunData : WeaponData
     {
-        [SerializeField] private int magazineSize;
-        [SerializeField] private float reloadSpeed;
+        [SerializeField] int magazineSize;
+        [SerializeField] float reloadSpeed;
 
         #region Getters and Setters
         public int MagazineSize { get => magazineSize; set => magazineSize = value; }

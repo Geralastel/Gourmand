@@ -7,9 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float lookSpeed = 1.0f;
     [SerializeField] float moveLookSpeed = 0.15f;
 
-#pragma warning disable CS0649
     [Space] [SerializeField] InputActionAsset playerControls;
-#pragma warning restore CS0649
 
     private InputAction _lookAction;
     private InputAction _moveAction;
@@ -22,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        var defaultActionMap = playerControls.FindActionMap("Standard");
+        var defaultActionMap = playerControls.FindActionMap("Gameplay");
 
         _moveAction = defaultActionMap.FindAction("Move");
         _lookAction = defaultActionMap.FindAction("Look");
