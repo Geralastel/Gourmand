@@ -1,18 +1,20 @@
 ﻿using Assets.Scripts;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield, IEmitDamageParticles
+public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield, ICanDie, IEmitDamageParticles
 {
     [SerializeField] float health = 10f;
+    [SerializeField] float healthMax = 10f;
     [SerializeField] float shield = 0f;
+    [SerializeField] float shieldMax = 10f;
 
     public float Health { get => health; set => health = value; }
 
-    public float HealthMax => 10f;
+    public float HealthMax => healthMax;
 
     public float Shield { get => shield; set => shield = value; }
 
-    public float ShieldMax => 10f;
+    public float ShieldMax => shieldMax;
 
     public DamageParticleSystem DamageParticleSystem { get; set; }
 
@@ -50,7 +52,15 @@ public class Enemy : MonoBehaviour, IDamageable, IHealth, IShield, IEmitDamagePa
 
         if (Health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        DamageParticleSystem?.EmitDead();
     }
 }

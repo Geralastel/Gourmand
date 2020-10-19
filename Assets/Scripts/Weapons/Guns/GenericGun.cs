@@ -4,12 +4,18 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public abstract class GenericGun : GenericWeapon<WeaponData>, IGun
+    public abstract class GenericGun : GenericWeapon<WeaponData>, IGun, IEmitBulletTracerParticle
     {
         private IEnumerator _reload;
         private GunData gunData;
 
         public int AmmoInClip { get; protected set; }
+        public BulletTracersParticleSystem BulletTracersParticleSystem { get; set; }
+
+        private void Awake()
+        {
+            BulletTracersParticleSystem = GetComponent<BulletTracersParticleSystem>();
+        }
 
         public abstract void Shoot();
 

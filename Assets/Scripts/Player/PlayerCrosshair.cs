@@ -15,6 +15,6 @@ public class PlayerCrosshair : MonoBehaviour
         _weaponData = weaponData;
 
         var pos = CrossHair.transform.position;
-        CrossHair.transform.position = new Vector2(_weaponData.Range, pos.y);
+        CrossHair.transform.position = new Vector2(_weaponData.Range + (transform.localScale.x), pos.y);
     }
 }

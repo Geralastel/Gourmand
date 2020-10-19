@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
-    <Compile Include="Assets\Scripts\Particles\DamageParticleSystem.cs" />
     <Compile Include="Assets\Scripts\Weapons\Guns\GenericGun.cs" />
     <Compile Include="Assets\Scripts\Weapons\Guns\IGun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeapon.cs" />
@@ -68,15 +67,19 @@
     <Compile Include="Assets\Scripts\Weapons\Guns\GunData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCrosshair.cs" />
     <Compile Include="Assets\Scripts\Particles\ParticleData.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Generic\GenericWeapon.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Generic\IWeapon.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity\IHealth.cs" />
     <Compile Include="Assets\Scripts\Entity\IShield.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Generic\WeaponData.cs" />
-    <Compile Include="Assets\Scripts\Particles\IEmitDamageParticles.cs" />
     <Compile Include="Assets\Scripts\Entity\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Weapons\Guns\StartingGun.cs" />
+    <Compile Include="Assets\Scripts\Entity\ICanDie.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WeaponData.cs" />
+    <Compile Include="Assets\Scripts\Weapons\IWeapon.cs" />
+    <Compile Include="Assets\Scripts\Weapons\GenericWeapon.cs" />
+    <Compile Include="Assets\Scripts\Particles\BulletTracers\IEmitDamageParticles.cs" />
+    <Compile Include="Assets\Scripts\Particles\BulletTracers\BulletTracersParticleSystem.cs" />
+    <Compile Include="Assets\Scripts\Particles\Damage\DamageParticleSystem.cs" />
+    <Compile Include="Assets\Scripts\Particles\Damage\IEmitDamageParticles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

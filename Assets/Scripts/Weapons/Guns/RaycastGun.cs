@@ -9,7 +9,9 @@ namespace Assets.Scripts.Weapons.Guns
 
         public override void Shoot()
         {
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, transform.right, weaponData.Range, collisionLayer);
+            BulletTracersParticleSystem?.EmitBulletTracer();
+
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.25f, transform.right, weaponData.Range, collisionLayer);
             Debug.DrawRay(transform.position, transform.right * weaponData.Range, Color.red, 20f);
             var hitDireciton = -hit.normal;
             if (hit.collider)

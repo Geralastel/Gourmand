@@ -432,7 +432,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 525149914}
-  m_Layer: 0
+  - component: {fileID: 525149915}
+  m_Layer: 11
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,6 +455,32 @@ Transform:
   m_Father: {fileID: 247285344}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &525149915
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525149913}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.75}
+  m_EdgeRadius: 0
 --- !u!1 &609048151
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +516,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  healthMax: 10
   shield: 0
+  shieldMax: 10
 --- !u!61 &609048153
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -609,11 +638,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 609048151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa27291773f6aa48b5b9a811f9db634, type: 3}
+  m_Script: {fileID: 11500000, guid: d6189f4d33b8c5a4c92301a03f0b0668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitParticleData: {fileID: 11400000, guid: cf37b135f4651ee4ab9b470d7caea317, type: 2}
-  deadParticleData: {fileID: 0}
+  deadParticleData: {fileID: 11400000, guid: 056c72d90dceeae4f9fd88694a8acd89, type: 2}
 --- !u!1 &1270895744
 GameObject:
   m_ObjectHideFlags: 0
