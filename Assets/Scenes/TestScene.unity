@@ -227,9 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c0af24595e77943bd1b9805b2376ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 37702d93e775b0943a4f340db704788c, type: 2}
+  weaponPrefab: {fileID: 8241598370974313866, guid: e17dd864df6dfa24fbfb0871c3a1ce4f, type: 3}
   weaponModelTransformParent: {fileID: 1918084738}
-  factory: {fileID: 6967122661390709490, guid: 6e50d5a9eeb96374f9f60a390621075b, type: 3}
 --- !u!114 &247285349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +496,7 @@ GameObject:
   - component: {fileID: 609048153}
   - component: {fileID: 609048158}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: PracticeDummy
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

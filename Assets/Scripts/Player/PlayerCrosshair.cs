@@ -1,5 +1,3 @@
-using Assets.Scripts;
-using Assets.Scripts.Weapons;
 using UnityEngine;
 
 public class PlayerCrosshair : MonoBehaviour
@@ -8,13 +6,14 @@ public class PlayerCrosshair : MonoBehaviour
     [SerializeField] GameObject CrossHair;
 #pragma warning restore CS0649
 
-    private WeaponData _weaponData;
-
-    public void Initialize(WeaponData weaponData)
+    public void Initialize(float range, Sprite crossHairSprite = null)
     {
-        _weaponData = weaponData;
+        if (crossHairSprite)
+        {
+            // will have to test if we have to disable and reenable
+            CrossHair.GetComponentInChildren<SpriteRenderer>().sprite = crossHairSprite;
+        }
 
-        var pos = CrossHair.transform.position;
-        CrossHair.transform.position = new Vector2(_weaponData.Range + (transform.localScale.x), pos.y);
+        CrossHair.transform.position = new Vector2(range + transform.localScale.x, CrossHair.transform.position.y);
     }
 }

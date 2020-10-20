@@ -1,9 +1,9 @@
 ﻿using Assets.Scripts.Particles;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Particles
 {
-    public class BulletTracersParticleSystem : MonoBehaviour
+    public class BulletTracersParticleSystem : MonoBehaviour, IParticleSystem
     {
 #pragma warning disable CS0649
         [SerializeField] ParticleData bulletTracerParticleData;
@@ -13,10 +13,7 @@ namespace Assets.Scripts
 
         void Awake()
         {
-            if (bulletTracerParticleData)
-            {
-                _bulletTracerParticleSystem = Instantiate(bulletTracerParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
-            }
+            Initialize();
         }
 
         public void EmitBulletTracer()
@@ -29,6 +26,14 @@ namespace Assets.Scripts
                 }
 
                 _bulletTracerParticleSystem.Play();
+            }
+        }
+
+        public void Initialize()
+        {
+            if (bulletTracerParticleData)
+            {
+                _bulletTracerParticleSystem = Instantiate(bulletTracerParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
             }
         }
     }

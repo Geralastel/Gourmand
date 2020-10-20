@@ -1,23 +1,36 @@
-﻿using Assets.Scripts.Weapons;
+﻿using Assets.Scripts.Particles;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Weapons
 {
-    public abstract class GenericGun : GenericWeapon<WeaponData>, IGun, IEmitBulletTracerParticle
+    public abstract class GenericGun : GenericWeapon<GunData>, IGun, IEmitBulletTracerParticle
     {
-        private IEnumerator _reload;
-        private GunData gunData;
-
         public int AmmoInClip { get; protected set; }
         public BulletTracersParticleSystem BulletTracersParticleSystem { get; set; }
+
+        public int MagazineSize { get; private set; }
+
+        public float ReloadSpeed { get; private set; }
+
+        private IEnumerator _reload;
 
         private void Awake()
         {
             BulletTracersParticleSystem = GetComponent<BulletTracersParticleSystem>();
+            Initialize();
         }
 
         public abstract void Shoot();
+
+        public override void GenerateStats()
+        {
+            base.GenerateStats();
+
+            MagazineSize = Random.Range(WeaponData.MinMagazineSize, WeaponData.MaxMagazineSize);
+            ReloadSpeed = Random.Range(WeaponData.MinReloadSpeed, WeaponData.MaxReloadSpeed);
+            AmmoInClip = MagazineSize;
+        }
 
         public override void PrimaryAction()
         {
@@ -37,35 +50,9 @@ namespace Assets.Scripts
             StartCoroutine(_reload);
         }
 
-        public override void Initialize(WeaponData weaponData)
-        {
-            base.Initialize(weaponData);
-
-            gunData = weaponData as GunData;
-
-            if (gunData == null)
-            {
-                Debug.LogError($"{gameObject.name}: Missing Gun Data");
-            }
-            else
-            {
-                if (gunData.MagazineSize == 0)
-                {
-                    Debug.LogError($"{gameObject.name}: Magazine Size set to 0");
-                }
-
-                if (gunData.ReloadSpeed == 0)
-                {
-                    Debug.LogError($"{gameObject.name}: Reload speed set to 0");
-                }
-            }
-
-            AmmoInClip = gunData.MagazineSize;
-        }
-
         public bool CanShoot()
         {
-            return gunData.MagazineSize == -1 || AmmoInClip > 0;
+            return MagazineSize == -1 || AmmoInClip > 0;
         }
 
         void OnAfterShoot()
@@ -77,9 +64,9 @@ namespace Assets.Scripts
         IEnumerator DoReload()
         {
             Debug.Log("WE RELOADING");
-            yield return new WaitForSeconds(10 / gunData.ReloadSpeed);
+            yield return new WaitForSeconds(10 / ReloadSpeed);
             Debug.Log("AMMO ADDED");
-            AmmoInClip = gunData.MagazineSize;
+            AmmoInClip = MagazineSize;
         }
     }
 }

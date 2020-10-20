@@ -60,14 +60,13 @@
     <Compile Include="Assets\Scripts\Weapons\Guns\IGun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\Entity\IDamageable.cs" />
-    <Compile Include="Assets\Scripts\Factory\WeaponFactory.cs" />
     <Compile Include="Assets\Scripts\Weapons\Guns\RaycastGun.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShoot.cs" />
     <Compile Include="Assets\Scripts\Weapons\Guns\GunData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCrosshair.cs" />
     <Compile Include="Assets\Scripts\Particles\ParticleData.cs" />
-    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\PracticeDummy.cs" />
     <Compile Include="Assets\Scripts\Entity\IHealth.cs" />
     <Compile Include="Assets\Scripts\Entity\IShield.cs" />
     <Compile Include="Assets\Scripts\Entity\IInteractable.cs" />
@@ -80,6 +79,10 @@
     <Compile Include="Assets\Scripts\Particles\BulletTracers\BulletTracersParticleSystem.cs" />
     <Compile Include="Assets\Scripts\Particles\Damage\DamageParticleSystem.cs" />
     <Compile Include="Assets\Scripts\Particles\Damage\IEmitDamageParticles.cs" />
+    <Compile Include="Assets\Scripts\Particles\IParticleSystem.cs" />
+    <Compile Include="Assets\Scripts\Entity\IRandomStats.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpriteManager.cs" />
+    <Compile Include="Assets\Scripts\Entity\IHasSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

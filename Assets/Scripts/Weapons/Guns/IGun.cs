@@ -1,7 +1,9 @@
-﻿namespace Assets.Scripts
+﻿namespace Assets.Scripts.Weapons
 {
-    internal interface IGun : IWeapon
+    public interface IGun : IWeapon
     {
+        int MagazineSize { get; }
+        float ReloadSpeed { get; }
         int AmmoInClip { get; }
         void Reload();
         void Shoot();

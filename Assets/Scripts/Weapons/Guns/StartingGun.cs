@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Weapons.Guns
+﻿namespace Assets.Scripts.Weapons
 {
     public class StartingGun : RaycastGun
     {

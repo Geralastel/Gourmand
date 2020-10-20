@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class DamageParticleSystem : MonoBehaviour
+    public class DamageParticleSystem : MonoBehaviour, IParticleSystem
     {
 #pragma warning disable CS0649
         [SerializeField] ParticleData hitParticleData;
@@ -13,17 +13,9 @@ namespace Assets.Scripts
         private ParticleSystem _hitParticleSystem;
         private ParticleSystem _deadParticleSystem;
 
-        void Awake()
+        private void Awake()
         {
-            if (hitParticleData)
-            {
-                _hitParticleSystem = Instantiate(hitParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
-            }
-
-            if (deadParticleData)
-            {
-                _deadParticleSystem = Instantiate(deadParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
-            }
+            Initialize();
         }
 
         public void EmitHit(Vector2? hitDirection)
@@ -55,6 +47,19 @@ namespace Assets.Scripts
                 }
 
                 _deadParticleSystem.Play();
+            }
+        }
+
+        public void Initialize()
+        {
+            if (hitParticleData)
+            {
+                _hitParticleSystem = Instantiate(hitParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
+            }
+
+            if (deadParticleData)
+            {
+                _deadParticleSystem = Instantiate(deadParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts;
+﻿using Assets.Scripts.Weapons;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
 
     private InputAction _shootAction;
 
-    private IGun _gun;
+    private IWeapon _weapon;
     private float _nextFireTime = 0f;
     private bool _held;
 
@@ -31,7 +31,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Start()
     {
-        _gun = GetComponentInChildren<IGun>();
+        _weapon = GetComponentInChildren<IWeapon>();
     }
 
     private void OnEnable() => _shootAction.Enable();
@@ -48,7 +48,7 @@ public class PlayerShoot : MonoBehaviour
         if (CanFire())
         {
             _nextFireTime = Time.time + 1f / fireRate;
-            _gun.PrimaryAction();
+            _weapon.PrimaryAction();
         }
     }
 }

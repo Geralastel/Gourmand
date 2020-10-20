@@ -1,40 +1,69 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Entity;
+using Assets.Scripts.Managers;
+using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
-    public abstract class GenericWeapon<T> : MonoBehaviour, IWeapon where T : WeaponData
+    public abstract class GenericWeapon<T> : MonoBehaviour, IWeapon, IRandomStats where T : WeaponData
     {
-        public T weaponData;
+        [SerializeField] T weaponData;
+        [SerializeField] LayerMask collisionLayer;
 
-        [SerializeField] protected LayerMask collisionLayer;
-
-        protected GameObject _prefab;
+        public T WeaponData { get; private set; }
+        public LayerMask CollisionLayer { get; private set; }
+        public SpriteManager SpriteManager { get; private set; }
+        public Sprite Sprite { get; private set; }
+        public float WeaponRange { get; private set; }
+        public float Damage { get; private set; }
+        public float KnockbackForce { get; private set; }
+        public float RateOfFire { get; private set; }
 
         public abstract void PrimaryAction();
         public abstract void SecondaryAction();
 
-        private void OnEnable()
+        public SpriteRenderer GetRenderer()
         {
-            if (_prefab != null)
+            SpriteRenderer ren = GetComponent<SpriteRenderer>();
+            if(ren == null)
             {
-                var parent = transform.parent;
-                Destroy(_prefab);
-
-                if (weaponData.Prefab != null)
-                {
-                    _prefab = Instantiate(weaponData.Prefab, parent);
-                }
+                Debug.Log($"ERROR: Could not find spriterendered in {gameObject.name}");
             }
+            return ren;
         }
 
-        public virtual void Initialize(T weaponData)
+        private void Awake()
         {
-            this.weaponData = weaponData;
+            Initialize();
+        }
+
+        public virtual void GenerateStats()
+        {
+            Sprite = weaponData.Sprite;
+            WeaponRange = Random.Range(weaponData.MinWeaponRange, weaponData.MaxWeaponRange);
+            Damage = Random.Range(weaponData.MinDamage, weaponData.MaxDamage);
+            KnockbackForce = Random.Range(weaponData.MinKnockbackForce, weaponData.MaxKnockbackForce);
+            RateOfFire = Random.Range(weaponData.MinRateOfFire, weaponData.MaxRateOfFire);
+        }
+
+        public virtual void Initialize()
+        {
+            SpriteManager = new SpriteManager(GetRenderer(), weaponData);
+            SpriteManager.SetSprite();
+
+            if (weaponData == null)
+            {
+                Debug.LogError($"{gameObject.name}: Missing Weapon Data");
+            }
 
             if (collisionLayer == 0)
             {
                 Debug.LogError($"{gameObject.name}: Collision Layer set to Nothing");
             }
+
+            WeaponData = weaponData;
+            CollisionLayer = collisionLayer;
+
+            GenerateStats();
         }
     }
 }

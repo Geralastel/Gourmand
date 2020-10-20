@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450d9b07f43cdda4189f48eb023992f1, type: 3}
   m_Name: StartingGun
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8241598370974313866, guid: e17dd864df6dfa24fbfb0871c3a1ce4f, type: 3}
-  range: 15
-  damage: 1
-  knockbackForce: 0
-  rateOfFire: 1
-  magazineSize: 20
-  reloadSpeed: 1
+  sprite: {fileID: -7593846782174613283, guid: 5d3d50d06cfdb6e419bb1a66063a15b9, type: 3}
+  minWeaponRange: 5
+  maxWeaponRange: 15
+  minDamage: 1
+  maxDamage: 3
+  minKnockbackForce: 0
+  maxKnockbackForce: 0
+  minRateOfFire: 1
+  maxRateOfFire: 5
+  minMagazineSize: 5
+  maxMagazineSize: 20
+  minReloadSpeed: 1
+  maxReloadSpeed: 1
