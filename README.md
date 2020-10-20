@@ -1,2 +1,2 @@
 # Gourmand
-Top-down Pixel Shooter with a focus on implementing various design patterns
+Top-down Pixel Shooter where you juggle guns to keep your score multiplier up
