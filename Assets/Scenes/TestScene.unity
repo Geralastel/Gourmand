@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c448037980b7abb49a6a40ffc84f4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrossHair: {fileID: 525149913}
+  crosshairReference: {fileID: 525149913}
 --- !u!1 &253506913
 GameObject:
   m_ObjectHideFlags: 0

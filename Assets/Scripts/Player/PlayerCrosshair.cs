@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PlayerCrosshair : MonoBehaviour
 {
-    [SerializeField] GameObject crosshairRef;
+    [SerializeField] GameObject crosshairReference;
     public GameObject CrosshairReference { get; private set; }
 
     public void Initialize(float range, Sprite crossHairSprite = null)
     {
-        if (crosshairRef)
+        if (crosshairReference)
         {
-            CrosshairReference = crosshairRef;
+            CrosshairReference = crosshairReference;
 
             if (crossHairSprite)
             {
