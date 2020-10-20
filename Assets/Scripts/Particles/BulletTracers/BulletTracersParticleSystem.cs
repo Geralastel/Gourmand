@@ -5,9 +5,8 @@ namespace Assets.Scripts.Particles
 {
     public class BulletTracersParticleSystem : MonoBehaviour, IParticleSystem
     {
-#pragma warning disable CS0649
         [SerializeField] ParticleData bulletTracerParticleData;
-#pragma warning restore CS0649
+        public ParticleData BulletTracerParticleData { get; private set; }
 
         private ParticleSystem _bulletTracerParticleSystem;
 
@@ -33,7 +32,12 @@ namespace Assets.Scripts.Particles
         {
             if (bulletTracerParticleData)
             {
+                BulletTracerParticleData = bulletTracerParticleData;
                 _bulletTracerParticleSystem = Instantiate(bulletTracerParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
+            }
+            else
+            {
+                Debug.LogError($"ERROR: Missing ParticleData in {gameObject.name}");
             }
         }
     }

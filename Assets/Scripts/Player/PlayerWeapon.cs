@@ -5,11 +5,11 @@ namespace Assets.Scripts.Player
 {
     public class PlayerWeapon : MonoBehaviour
     {
-
-#pragma warning disable CS0649
         [SerializeField] GameObject weaponPrefab;
         [SerializeField] Transform weaponModelTransformParent;
-#pragma warning restore CS0649
+
+        public GameObject WeaponPrefab { get; private set; }
+        public Transform WeaponModelTransformParent { get; private set; }
 
         private PlayerCrosshair _crosshair;
         private IWeapon _equipedWeapon;
@@ -17,11 +17,33 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             _crosshair = GetComponent<PlayerCrosshair>();
+            if (_crosshair == null)
+            {
+                Debug.LogError($"Could not find PlayerCrosshair component in {gameObject.name}");
+            }
             Initialize();
         }
 
         public void Initialize()
         {
+            if (weaponPrefab)
+            {
+                WeaponPrefab = weaponPrefab;
+            }
+            else
+            {
+                Debug.LogError($"Missing WeaponPrefab in {gameObject.name}");
+            }
+
+            if (weaponModelTransformParent)
+            {
+                WeaponModelTransformParent = weaponModelTransformParent;
+            }
+            else
+            {
+                Debug.LogError($"Missing WeaponModelTransformParent in {gameObject.name}");
+            }
+
             _equipedWeapon = Instantiate(weaponPrefab, weaponModelTransformParent).GetComponent<IWeapon>();
             if (_equipedWeapon == null)
             {
@@ -29,6 +51,6 @@ namespace Assets.Scripts.Player
             }
 
             _crosshair.Initialize(_equipedWeapon.WeaponRange);
-         }
+        }
     }
 }

@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class PlayerCrosshair : MonoBehaviour
 {
-#pragma warning disable CS0649
-    [SerializeField] GameObject CrossHair;
-#pragma warning restore CS0649
+    [SerializeField] GameObject crosshairRef;
+    public GameObject CrosshairReference { get; private set; }
 
     public void Initialize(float range, Sprite crossHairSprite = null)
     {
-        if (crossHairSprite)
+        if (crosshairRef)
         {
-            // will have to test if we have to disable and reenable
-            CrossHair.GetComponentInChildren<SpriteRenderer>().sprite = crossHairSprite;
-        }
+            CrosshairReference = crosshairRef;
 
-        CrossHair.transform.position = new Vector2(range + transform.localScale.x, CrossHair.transform.position.y);
+            if (crossHairSprite)
+            {
+                CrosshairReference.GetComponentInChildren<SpriteRenderer>().sprite = crossHairSprite;
+            }
+
+            CrosshairReference.transform.position = new Vector2(range + transform.localScale.x, CrosshairReference.transform.position.y);
+        } else
+        {
+            Debug.LogError($"ERROR: Missing reference to Crosshair object in {gameObject.name}");
+        }
     }
 }

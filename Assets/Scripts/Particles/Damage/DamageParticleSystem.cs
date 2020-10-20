@@ -5,10 +5,11 @@ namespace Assets.Scripts
 {
     public class DamageParticleSystem : MonoBehaviour, IParticleSystem
     {
-#pragma warning disable CS0649
         [SerializeField] ParticleData hitParticleData;
         [SerializeField] ParticleData deadParticleData;
-#pragma warning restore CS0649
+
+        public ParticleData HitParticleData { get; private set; }
+        public ParticleData DeadParticleData { get; private set; }
 
         private ParticleSystem _hitParticleSystem;
         private ParticleSystem _deadParticleSystem;
@@ -54,12 +55,22 @@ namespace Assets.Scripts
         {
             if (hitParticleData)
             {
-                _hitParticleSystem = Instantiate(hitParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
+                HitParticleData = hitParticleData;
+                _hitParticleSystem = Instantiate(HitParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
+            }
+            else
+            {
+                Debug.LogError($"ERROR: Missing HitParticleData in {gameObject.name}");
             }
 
             if (deadParticleData)
             {
-                _deadParticleSystem = Instantiate(deadParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
+                DeadParticleData = deadParticleData;
+                _deadParticleSystem = Instantiate(DeadParticleData.ParticleSystem.GetComponent<ParticleSystem>(), transform);
+            }
+            else
+            {
+                Debug.LogError($"ERROR: Missing DeadParticleData in {gameObject.name}");
             }
         }
     }

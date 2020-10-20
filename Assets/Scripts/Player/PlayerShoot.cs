@@ -7,9 +7,8 @@ public class PlayerShoot : MonoBehaviour
     [Tooltip("Fire rate is set in rounds per minute")]
     [Range(1, 10)] [SerializeField] float fireRate = 1;
 
-#pragma warning disable CS0649
     [Space] [SerializeField] InputActionAsset playerControls;
-#pragma warning restore CS0649
+    public InputActionAsset PlayerControls { get; private set; }
 
     private InputAction _shootAction;
 
@@ -19,7 +18,16 @@ public class PlayerShoot : MonoBehaviour
 
     private void Awake()
     {
-        var defaultActionMap = playerControls.FindActionMap("Standard");
+        if (playerControls)
+        {
+            PlayerControls = playerControls;
+        }
+        else
+        {
+            Debug.LogError($"ERROR: Missing InputActionAsset in {gameObject.name}");
+        }
+
+        var defaultActionMap = PlayerControls.FindActionMap("Standard");
 
         _shootAction = defaultActionMap.FindAction("Shoot");
 

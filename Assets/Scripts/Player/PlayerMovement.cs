@@ -7,9 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float lookSpeed = 1.0f;
     [SerializeField] float moveLookSpeed = 0.15f;
 
-#pragma warning disable CS0649
     [Space] [SerializeField] InputActionAsset playerControls;
-#pragma warning restore CS0649
+    public InputActionAsset PlayerControls { get; private set; }
 
     private InputAction _lookAction;
     private InputAction _moveAction;
@@ -21,8 +20,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        if(playerControls)
+        {
+            PlayerControls = playerControls;
+        } else
+        {
+            Debug.LogError($"ERROR: Missing InputActionAsset in {gameObject.name}");
+        }
+
         _rb = GetComponent<Rigidbody2D>();
-        var defaultActionMap = playerControls.FindActionMap("Standard");
+        var defaultActionMap = PlayerControls.FindActionMap("Standard");
 
         _moveAction = defaultActionMap.FindAction("Move");
         _lookAction = defaultActionMap.FindAction("Look");
