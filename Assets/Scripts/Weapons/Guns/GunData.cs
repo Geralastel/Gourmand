@@ -9,8 +9,8 @@ namespace Assets.Scripts.Weapons
         [Min(1)] [SerializeField] private int minMagazineSize;
         [Min(1)] [SerializeField] private int maxMagazineSize;
         [Space]
-        [Min(1)] [SerializeField] private float minReloadSpeed;
-        [Min(1)] [SerializeField] private float maxReloadSpeed;
+        [Range(1,10)] [SerializeField] private float minReloadSpeed;
+        [Range(1,10)] [SerializeField] private float maxReloadSpeed;
 
         #region Getters and Setters
         public int MinMagazineSize { get => minMagazineSize; private set => minMagazineSize = value; }

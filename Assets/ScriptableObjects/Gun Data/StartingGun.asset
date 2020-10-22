@@ -19,9 +19,9 @@ MonoBehaviour:
   maxDamage: 3
   minKnockbackForce: 0
   maxKnockbackForce: 0
-  minRateOfFire: 1
-  maxRateOfFire: 5
-  minMagazineSize: 5
-  maxMagazineSize: 20
+  minRateOfFire: 10
+  maxRateOfFire: 10
+  minMagazineSize: 20
+  maxMagazineSize: 30
   minReloadSpeed: 1
   maxReloadSpeed: 1

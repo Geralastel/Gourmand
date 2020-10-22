@@ -1,25 +1,29 @@
 using UnityEngine;
 
-public class PlayerCrosshair : MonoBehaviour
+namespace Assets.Scripts.Player
 {
-    [SerializeField] GameObject crosshairReference;
-    public GameObject CrosshairReference { get; private set; }
-
-    public void Initialize(float range, Sprite crossHairSprite = null)
+    public class PlayerCrosshair : MonoBehaviour
     {
-        if (crosshairReference)
-        {
-            CrosshairReference = crosshairReference;
+        [SerializeField] GameObject crosshairReference;
+        public GameObject CrosshairReference { get; private set; }
 
-            if (crossHairSprite)
+        public void Initialize(float range, Sprite crossHairSprite = null)
+        {
+            if (crosshairReference)
             {
-                CrosshairReference.GetComponentInChildren<SpriteRenderer>().sprite = crossHairSprite;
-            }
+                CrosshairReference = crosshairReference;
 
-            CrosshairReference.transform.position = new Vector2(range + transform.localScale.x, CrosshairReference.transform.position.y);
-        } else
-        {
-            Debug.LogError($"ERROR: Missing reference to Crosshair object in {gameObject.name}");
+                if (crossHairSprite)
+                {
+                    CrosshairReference.GetComponentInChildren<SpriteRenderer>().sprite = crossHairSprite;
+                }
+
+                CrosshairReference.transform.position = new Vector2(range + transform.localScale.x, CrosshairReference.transform.position.y);
+            }
+            else
+            {
+                Debug.LogError($"ERROR: Missing reference to Crosshair object in {gameObject.name}");
+            }
         }
     }
 }

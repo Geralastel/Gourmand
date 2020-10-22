@@ -43,6 +43,7 @@ namespace Assets.Scripts.Weapons
             Damage = Random.Range(weaponData.MinDamage, weaponData.MaxDamage);
             KnockbackForce = Random.Range(weaponData.MinKnockbackForce, weaponData.MaxKnockbackForce);
             RateOfFire = Random.Range(weaponData.MinRateOfFire, weaponData.MaxRateOfFire);
+            Debug.Log($"Rate of fire{RateOfFire}");
         }
 
         public virtual void Initialize()

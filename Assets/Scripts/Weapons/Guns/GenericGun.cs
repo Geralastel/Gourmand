@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Particles;
+﻿using Assets.Scripts.Managers;
+using Assets.Scripts.Particles;
 using System.Collections;
 using UnityEngine;
 
@@ -57,16 +58,14 @@ namespace Assets.Scripts.Weapons
 
         void OnAfterShoot()
         {
-            Debug.Log("Ammo removed");
             AmmoInClip--;
         }
 
         IEnumerator DoReload()
         {
-            Debug.Log("WE RELOADING");
-            yield return new WaitForSeconds(10 / ReloadSpeed);
-            Debug.Log("AMMO ADDED");
+            yield return new WaitForSeconds(1 / ReloadSpeed);
             AmmoInClip = MagazineSize;
+            EventManager.TriggerEvent(Events.Reload);
         }
     }
 }

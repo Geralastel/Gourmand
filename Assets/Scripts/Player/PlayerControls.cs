@@ -78,7 +78,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""4854d7e0-8dde-4b5c-b15f-9d65a9e0cdf2"",
                     ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Shoot"",

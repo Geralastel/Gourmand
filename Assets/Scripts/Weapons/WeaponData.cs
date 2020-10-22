@@ -16,8 +16,8 @@ namespace Assets.Scripts.Weapons
         [Min(1)] [SerializeField] float minKnockbackForce;
         [Min(1)] [SerializeField] float maxKnockbackForce;
         [Space]
-        [Min(1)] [SerializeField] float minRateOfFire;
-        [Min(1)] [SerializeField] float maxRateOfFire;
+        [Range(1,10)] [SerializeField] float minRateOfFire;
+        [Range(1,10)] [SerializeField] float maxRateOfFire;
 
         #region Getters and Setters
         public Sprite Sprite { get => sprite; private set => sprite = value; }
